@@ -16,6 +16,14 @@
 			}
 			play = !play;
 		}
+
+		// Hack added after the fact to play music even when chromium disables autoplay
+		// Audio may only be played after the user has already interacted with the page
+		window.addEventListener("keydown", () => {
+			if (play) {
+				document.getElementById('ost').play();
+			}
+		});
 	</script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
