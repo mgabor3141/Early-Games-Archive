@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LD30</title>
+	<script type="text/javascript" src="level.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript">
+		var play = true;
+		function playpause() {
+			if (play) {
+				document.getElementById('ost').pause();
+				document.getElementById("button").innerHTML = "Play Music"
+			} else {
+				document.getElementById('ost').play();
+				document.getElementById("button").innerHTML = "Pause Music"
+			}
+			play = !play;
+		}
+	</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body onload="init()">
+	<div id="container">
+		<img src="img/logo_wide.png" alt="Switch">
+		<canvas id="canvas" width="800" height="480"></canvas>
+		<p>
+			Use <b>WASD</b> to move and <b>SPACEBAR</b> to switch dimensions.<br>Get to the <b>exit</b> on each level!<br>
+			<button id="button" onclick="playpause();">Pause Music</button>
+		</p>
+		<div id="text">
+			<h3>Thank you for playing</h3>
+			<h1>Switch</h1>
+			<p>This game was made for the 30th Ludum Dare 48 hour game jam.</p>
+			<p><small>mgabor - 2014 August</small></p>
+		</div>
+	</div>
+	<audio id="ost" preload="auto" autoplay="autoplay" loop="loop">
+		<source src="music/LD30.mp3" type="audio/mp3">
+		<source src="music/LD30.ogg" type="audio/ogg">
+		<source src="music/LD30.wav" type="audio/wav">
+  		Your browser does not support HTML5 audio.
+	</audio>
+</body>
+</html>

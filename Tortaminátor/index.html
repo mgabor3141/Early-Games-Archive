@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Torta terminátor</title>
+</head>
+<script>
+ var palya = new Array();
+ var jatek = [['f','f','f','f','f','f','f','f'],	//
+				['f','f','f','c','f','f','f','f'],
+				['f','f','f','p','f','f','f','f'],
+				['f','f','f','s','p','s','c','f'],
+				['f','c','p','s','ew','f','f','f'],
+				['f','f','f','f','s','f','f','f'],
+				['f','f','f','f','c','f','f','f'],
+				['f','f','f','f','f','f','f','f']];
+ var n=0;
+ var m;
+ // pálya száma
+ var egerx=0, egery=0; // egér pozíciója
+ // f-fal, s-sajt, p-pálya, c-cél, s1-sajt a cél felett
+	palya[0]=	[['f','f','f','f','f','f','f','f'],
+				['f','f','f','c','f','f','f','f'],
+				['f','f','f','p','f','f','f','f'],
+				['f','f','f','s','p','s','c','f'],
+				['f','c','p','s','ew','f','f','f'],
+				['f','f','f','f','s','f','f','f'],
+				['f','f','f','f','c','f','f','f'],
+				['f','f','f','f','f','f','f','f']];
+ //
+	palya[1]=	[['f','es','p','p','f','f','f','f'],
+			 	['f','p','s','s','f','f','f','f'],
+			 	['f','p','s','p','f','f','f','c'],
+			 	['f','f','f','p','f','f','f','c'],
+			 	['f','f','f','p','p','p','p','c'],
+			 	['f','f','f','p','p','f','p','p'],
+			 	['f','f','p','p','p','f','f','f'],
+				['f','f','p','p','p','f','f','f']];
+//
+    palya[2]=	[['f','f','f','f','f','f','f','f'],
+				['f','p','p','p','p','p','f','f'],
+        		['f','s','f','f','f','p','p','p'],
+        		['p','ee','p','s','p','p','s','p'],
+        		['p','c','c','f','p','s','p','f'],
+        		['f','c','c','f','p','p','p','f'],
+        		['f','f','f','f','f','f','f','f'],
+        		['f','f','f','f','f','f','f','f']];
+//
+    palya[3]=	[['f','f','f','f','f','f','f','f'],
+				['f','f','es','p','f','f','f','f'],
+        		['f','f','p','s','p','p','f','f'],
+        		['f','f','f','p','f','p','f','f'],
+        		['f','c','f','p','f','p','p','f'],
+        		['f','c','s','p','p','f','p','f'],
+        		['f','c','p','p','p','s','p','f'],
+        		['f','f','f','f','f','f','f','f']];
+//
+    palya[4]=	[['f','f','f','f','f','f','f','f'],
+				['f','f','f','f','p','p','c','f'],
+        		['f','p','p','p','s','p','s1','f'],
+        		['f','p','s','s','p','s','c','f'],
+        		['f','f','en','f','f','c','c','f'],
+        		['f','f','f','f','f','f','f','f'],
+        		['f','f','f','f','f','f','f','f'],
+        		['f','f','f','f','f','f','f','f']];
+
+// 
+    palya[5]=  [['f','p','p','p','p','p','p','p'],
+				['ee','p','f','f','f','s','f','p'],
+        		['p','s','p','p','p','p','p','p'],
+        		['f','f','f','f','f','s','f','p'],
+        		['f','f','c','p','p','p','p','p'],
+        		['f','f','f','f','f','p','f','p'],
+        		['f','f','c','p','p','p','p','p'],
+        		['f','f','f','f','f','c','f','f']];
+
+// 
+    palya[6]=  [['f','f','f','f','f','p','p','f'],
+				['p','s','p','p','p','p','p','f'],
+        		['p','f','f','f','f','f','p','f'],
+        		['p','f','f','f','p','p','p','p'],
+        		['en','f','f','p','p','p','p','p'],
+        		['p','f','c','s1','s1','p','f','f'],
+        		['p','f','f','f','p','f','f','f'],
+        		['p','p','p','p','p','f','f','f']];
+
+// 
+	palya[7]=  [['f','f','f','f','f','f','f','f'],
+				['f','f','p','p','p','f','f','f'],
+        		['f','f','p','f','p','p','p','f'],
+        		['f','f','p','p','p','f','p','f'],
+        		['f','f','f','p','p','p','p','f'],
+        		['f','f','f','p','f','f','f','f'],
+        		['f','p','s','s','p','f','f','f'],
+        		['f','ee','c','c','p','f','f','f']];
+
+// 
+	palya[8]=  [['f','f','f','f','f','f','f','f'],
+				['f','f','p','c','f','c','f','f'],
+        		['f','p','p','s','c','s1','c','f'],
+        		['f','ee','p','s','s1','s','s','c'],
+        		['f','p','p','s','c','p','p','f'],
+        		['f','p','f','s','p','f','f','f'],
+        		['f','p','f','p','p','f','f','f'],
+        		['f','p','p','p','f','f','f','f']];
+
+// 
+	palya[9]=  [['f','f','p','p','p','f','f','f'],
+				['f','p','p','f','p','p','f','f'],
+        		['f','p','f','f','f','en','f','f'],
+        		['f','p','f','f','f','f','f','f'],
+        		['f','p','f','f','s1','c','s1','f'],
+        		['f','p','p','f','f','s','f','f'],
+        		['f','f','p','p','p','p','f','f'],
+        		['f','f','f','f','f','f','f','f']];
+
+// 
+	palya[10]=  [['f','f','f','f','f','f','f','f'],
+				['f','f','f','f','f','f','f','f'],
+        		['f','f','f','f','f','f','f','f'],
+        		['f','f','ee','f','f','s1','f','f'],
+        		['f','f','f','f','f','f','f','f'],
+        		['f','p','p','p','p','p','p','f'],
+        		['f','f','f','f','f','f','f','f'],
+        		['f','f','f','f','f','f','f','f']];
+
+// 
+function nincs_jatek_vege()	// akkor van játék vége, ha az aktuális pályán (jatek tömb) nincs cél elem
+{
+ var vege=false;
+ var i=0, j=0;
+ while ((!vege) && (i<8))
+ {
+ 	j=0;
+ 	while ((!vege) && (j<8))
+ 	{
+ 		if (jatek[i][j]=='c')
+ 			vege=true;
+ 		j++;
+ 	}
+ 	i++;
+ }
+ if (n == 10) vege = true;
+ return vege;
+}
+//
+function jatek_indul(p)
+{
+ n=p; // pályaszám beállítás
+ var s="";
+ for(i=0;i<8;i++)
+ {
+ 	for(j=0;j<8;j++)
+ 	{
+ 		s+="<img id="+i+j+" src="+palya[p][i][j]+".jpg>";
+ 		if (palya[p][i][j]=='en' || palya[p][i][j]=='ew' || palya[p][i][j]=='ee' || palya[p][i][j]=='es') 	// egér pozíció beállítása
+ 		{
+ 			egerx=i;egery=j;
+ 		}
+ 		jatek[i][j]=palya[p][i][j];
+ 	}
+ 	s+="<br>";
+ }
+ document.getElementById("palyadiv").innerHTML=s;
+ if (p == 10) {
+	document.getElementById("lie").style.display = "block";
+ } else {
+	document.getElementById("lie").style.display = "none";
+ }
+ //ha új pályát kezdünk, a radio csoportról elvesszük a fókuszt.
+ window.focus();
+ document.getElementById("palyanum").innerHTML = "<b>"+(p+1)+". pálya</b>";
+ // 
+}
+//
+function palyarajzol(x,y) // x,y helyre pálya vagy célelem kerül
+{
+		if (palya[n][x][y]=='c' || palya[n][x][y]=='s1') 
+		{
+			document.getElementById(""+x+y).src="c.jpg";	// cél képcsere
+			jatek[x][y]='c';
+		}		
+		else 
+		{
+			document.getElementById(""+x+y).src="p.jpg";	// pálya képcsere
+			jatek[x][y]='p';
+		}
+
+}
+//
+function felfele()
+{
+	//alert(egery+"Felfele lépünk!"+egerx);
+	if ((egerx>0) && (jatek[egerx-1][egery]=='p' || jatek[egerx-1][egery]=='c'))	// szabad a pálya
+	{								// akkor felfele lépünk, csere
+		palyarajzol(egerx,egery);
+		document.getElementById(""+(--egerx)+egery).src="en.jpg";
+	}
+	else
+	if ((egerx>1) && (jatek[egerx-1][egery]=='s' || jatek[egerx-1][egery]=='s1'))	// sajt van felfele 
+	{								// akkor felfele toljuk, csere
+		if (jatek[egerx-2][egery]=='p') // sajttól felfele üres hely van
+		{
+			document.getElementById(""+(egerx-2)+egery).src="s.jpg";	// sajt oda
+			jatek[egerx-2][egery]='s';
+			palyarajzol(egerx,egery);	// egér pozíció visszaállítás
+			egerx--;
+			palyarajzol(egerx,egery);	// sajt pozíció visszaállítás
+			document.getElementById(""+egerx+egery).src="en.jpg";
+		}
+		else	
+		if (jatek[egerx-2][egery]=='c') // sajttól felfele cél hely van
+		{
+			document.getElementById(""+(egerx-2)+egery).src="s1.jpg";	// sajt oda
+			jatek[egerx-2][egery]='s1';
+			palyarajzol(egerx,egery);
+			egerx--;
+			palyarajzol(egerx,egery);
+			document.getElementById(""+egerx+egery).src="en.jpg";
+		} else {
+			document.getElementById(""+egerx+egery).src="en.jpg";
+		}
+	} else {
+		document.getElementById(""+egerx+egery).src="en.jpg";
+	}
+}
+//
+function lefele()
+{
+	//alert("Lefele lépünk!");
+	if ((egerx<7) && (jatek[egerx+1][egery]=='p' || jatek[egerx+1][egery]=='c'))	// szabad a pálya
+	{								// akkor lefele lépünk, csere
+		palyarajzol(egerx,egery);
+		document.getElementById(""+(++egerx)+egery).src="es.jpg";
+	}
+	else
+	if ((egerx<6) &&(jatek[egerx+1][egery]=='s' || jatek[egerx+1][egery]=='s1'))	// sajt van lefele
+	{								// akkor lefele toljuk, csere
+		if (jatek[egerx+2][egery]=='p') // sajttól lefele üres hely van
+		{
+			document.getElementById(""+(egerx+2)+egery).src="s.jpg";	// sajt oda
+			jatek[egerx+2][egery]='s';
+			palyarajzol(egerx,egery);
+			egerx++;
+			palyarajzol(egerx,egery);
+			document.getElementById(""+egerx+egery).src="es.jpg";
+		}
+		else	
+		if (jatek[egerx+2][egery]=='c') // sajttól lefele cél hely van
+		{
+			document.getElementById(""+(egerx+2)+egery).src="s1.jpg";	// sajt oda
+			jatek[egerx+2][egery]='s1';
+			palyarajzol(egerx,egery);
+			egerx++;
+			palyarajzol(egerx,egery);
+			document.getElementById(""+egerx+egery).src="es.jpg";
+		} else {
+			document.getElementById(""+egerx+egery).src="es.jpg";
+		}
+	} else {
+		document.getElementById(""+egerx+egery).src="es.jpg";
+	}
+}
+//
+function balra()
+{
+//	alert("Balra lépünk!");
+	if ((egery>0) && (jatek[egerx][egery-1]=='p' || jatek[egerx][egery-1]=='c'))	// szabad a pálya
+	{								// akkor balra lépünk, csere
+		palyarajzol(egerx,egery);
+		document.getElementById(""+egerx+(--egery)).src="ew.jpg";
+	}
+	else
+	if ((egery>1) && (jatek[egerx][egery-1]=='s' || jatek[egerx][egery-1]=='s1'))	// sajt van balra
+	{								// akkor balra toljuk 
+		if (jatek[egerx][egery-2]=='p') // sajttól felfele üres hely van
+		{
+			document.getElementById(""+egerx+(egery-2)).src="s.jpg";	// sajt oda
+			jatek[egerx][egery-2]='s';
+			palyarajzol(egerx,egery);
+			egery--;
+			palyarajzol(egerx,egery);
+			document.getElementById(""+egerx+egery).src="ew.jpg";
+		}
+		else	
+		if (jatek[egerx][egery-2]=='c') // sajttól felfele cél hely van
+		{
+			document.getElementById(""+egerx+(egery-2)).src="s1.jpg";	// sajt oda
+			jatek[egerx][egery-2]='s1';
+			palyarajzol(egerx,egery);
+			egery--;
+			palyarajzol(egerx,egery);
+			document.getElementById(""+egerx+egery).src="ew.jpg";
+		} else {
+			document.getElementById(""+egerx+egery).src="ew.jpg";
+		}
+	} else {
+		document.getElementById(""+egerx+egery).src="ew.jpg";
+	}
+}
+//
+function jobbra()
+{
+//	alert("Jobbra lépünk!");
+	if ((egery<7) && (jatek[egerx][egery+1]=='p' || jatek[egerx][egery+1]=='c'))	// szabad a pálya
+	{								// akkor jobbra lépünk, csere
+		palyarajzol(egerx,egery);
+		document.getElementById(""+egerx+(++egery)).src="ee.jpg";
+	}
+	else
+	if ((egery<6) && (jatek[egerx][egery+1]=='s' || jatek[egerx][egery+1]=='s1'))	// sajt van jobbra
+	{								// akkor jobbra toljuk a sajtot, csere
+		if (jatek[egerx][egery+2]=='p') // sajttól jobbra üres hely van
+		{
+			document.getElementById(""+egerx+(egery+2)).src="s.jpg";	// sajt oda
+			jatek[egerx][egery+2]='s';
+			palyarajzol(egerx,egery);
+			egery++;
+			palyarajzol(egerx,egery);
+			document.getElementById(""+egerx+egery).src="ee.jpg";
+		}
+		else	
+		if (jatek[egerx][egery+2]=='c') // sajttól jobbra cél hely van
+		{
+			document.getElementById(""+egerx+(egery+2)).src="s1.jpg";	// sajt oda
+			jatek[egerx][egery+2]='s1';
+			palyarajzol(egerx,egery);
+			egery++;
+			palyarajzol(egerx,egery);
+			document.getElementById(""+egerx+egery).src="ee.jpg";
+		} else {
+			document.getElementById(""+egerx+egery).src="ee.jpg";
+		}
+	} else {
+		document.getElementById(""+egerx+egery).src="ee.jpg";
+	}
+}
+//
+function billentyu(e) // keydown eseményt szereti a body, a keypress-t nem
+{
+//alert(e.keyCode); // remek ellenőrzésnek, 38-felfele, 40-lefele, 37-balra, 39-jobbra, 
+//Ezek az adatok Firefox, IE-ben is azonosak.
+ switch(e.keyCode)
+ {
+ 	case (38): 	felfele();
+ 				break;
+ 	case (40):	lefele();
+ 				break;
+ 	case (37):	balra();
+ 				break;
+ 	case (39):	jobbra();
+ }
+ // minden lépés után, teszt, vége-e a játéknak
+ if (!nincs_jatek_vege())
+ {
+ 	alert("Nyertél!");
+    m=n;	// új játék indul
+	jatek_indul(n+1);
+ }
+ else window.focus();
+ }
+</script>
+<body onload="jatek_indul(0);" onkeydown="billentyu(event);return false;">
+<center>
+<h1>Torta terminátor</h1>
+<br/>
+<span id="palyanum"></span>
+<div id="palyadiv"></div>
+<br/>
+<h3>Válassz másik pályát!</h3>
+<br/>
+<form name="gombok">
+<input type="button" onclick="jatek_indul(0);"  value="1. pálya"/> 
+<input type="button" onclick="jatek_indul(1);"  value="2. pálya"/> 
+<input type="button" onclick="jatek_indul(2);"  value="3. pálya"/> 
+<input type="button" onclick="jatek_indul(3);"  value="4. pálya"/> 
+<input type="button" onclick="jatek_indul(4);"  value="5. pálya"/> | 
+<input type="button" onclick="jatek_indul(5);"  value="6. pálya"/> 
+<input type="button" onclick="jatek_indul(6);"  value="7. pálya"/> 
+<input type="button" onclick="jatek_indul(7);"  value="8. pálya"/> 
+<input type="button" onclick="jatek_indul(8);"  value="9. pálya"/> 
+<input type="button" onclick="jatek_indul(9);"  value="10. pálya"/> 
+<input type="button" onclick="jatek_indul(10);" value="11. pálya"/>
+</form>
+<img src="en.jpg" height="1" width="1">
+<img src="ew.jpg" height="1" width="1">
+<img src="ee.jpg" height="1" width="1">
+<img src="es.jpg" height="1" width="1">
+<img src="s1.jpg" height="1" width="1">
+<div id="lie" style="display: none; position: relative; font-family: Courier New; color: #333; bottom: 233px; z-index: 100;"><p>The cake is a lie.</p></div>
+</center>
+</body>
+</html>

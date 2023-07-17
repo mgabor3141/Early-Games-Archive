@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rules</title>
+	<script type="text/javascript" src="scripts.js"></script>
+	<script type="text/javascript" src="level.js"></script>
+	<style type="text/css">
+		body { font-family: Arial; }
+	</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+	<!-- <meta property="og:title" content="Avoid the missiles! - An addictive 2D arcade game" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://MagyarGabor.net46.net/game/index.htm" />
+	<meta property="og:image" content="http://magyargabor.net46.net/img/icon.png" />
+	<meta property="og:site_name" content="MagyarGabor.net46.net" />
+	<meta property="fb:admins" content="1651020741" /> -->
+</head>
+
+<body onkeydown="bill(event);" onkeyup="billfel(event);">
+	<center><p><i>Use the <b>arrow keys</b> to move and <b>spacebar</b> to activate buttons. Press <b>P</b> to toggle party mode!</i></p></center>
+	<div style="margin: 0 auto; width: 720px; position: relative;">
+		<canvas id="background" width="720" height="480" style="position: absolute; top: 0;"></canvas>
+		<canvas id="canvas" width="720" height="480" style="position: absolute; top: 0; z-index: 1;"></canvas>
+	</div>
+</body>
+</html>

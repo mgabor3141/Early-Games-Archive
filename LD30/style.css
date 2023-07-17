@@ -1,0 +1,42 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #AAA;
+	font-family: Arial;
+	font-size: 15px;
+}
+
+#container {
+	position: relative;
+	width: 820px;
+	margin: 20px auto;
+}
+
+#container p {
+	text-align: center;
+	margin: 18px;
+}
+
+#text {
+	display: none;
+	position: absolute;
+	top: 170px;
+	left: 10px;
+	text-align: center;
+	width: 800px;
+	padding: 100px 0;
+	margin: 0 auto;
+	color: white;
+}
+
+#text h1 {
+	font-size: 45px;
+}
+
+#text p {
+	font-size: 25px;
+}
+
+#canvas {
+	border: 10px solid #888;
+}

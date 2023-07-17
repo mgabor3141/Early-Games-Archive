@@ -1,0 +1,76 @@
+body {
+	font-family: Tahoma;
+}
+table {
+	border: 1px solid black;
+}
+table td {
+	width: 35px;
+	height: 22px;
+	border: 1px solid black;
+}
+#container {
+	width: 600px;
+	margin: 0 auto;
+}
+.panel {
+	float: left;
+}
+.colorbutton {
+	width: 40px;
+	height: 30px;
+	border: 1px solid black;
+	margin: 0 10px 10px 10px;
+	cursor: pointer;
+}
+#targetrow td {
+	border: 2px solid black;
+	font-weight: bold;
+	text-align: center;
+	cursor: default;
+}
+#selectrow td {
+	font-weight: bold;
+	color: red;
+	text-align: center;
+	cursor: pointer;
+	border: 2px solid black;
+}
+#enterbutton {
+	text-align: center;
+	cursor: pointer;
+}
+#enterbutton:hover {
+	background-color: #CCC;
+}
+td.side, #selectrow td.side, #targetrow td.side {
+	border-width: 0;
+	text-align: right;
+	font-size: 12px;
+}
+td.right {
+	text-align: left;
+}
+.redmarker {
+	color: #C00;
+	font-weight: bold;
+}
+.yellowmarker {
+	color: #C90;
+	font-weight: bold;
+}
+#instructions {
+	font-size: 12px;
+	width: 250px;
+	padding: 0 10px;
+	margin: 0 5px;
+	border: 1px solid black;
+	text-align: justify;
+}
+a:link, a:active, a:visited {
+	color: blue;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}

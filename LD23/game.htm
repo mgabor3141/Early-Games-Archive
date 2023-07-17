@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Tiny Town</title>
+	<script type="text/javascript" src="scripts.js"></script>
+	<style type="text/css">
+		body { font-family: Arial; }
+		a:link, a:active, a:visited { font-family: Courier; font-size: 18px; font-weight: bold; color: #C50; }
+		a:hover { color: #EA0; }
+		.menu { display: none; position: absolute; top: 0; left: 0; z-index: 2;}
+		.price { position: absolute; font-family: Courier; font-size: 16px; font-weight: bold; z-index: 5; cursor: default; }
+		.tutorial { position: absolute; font-family: Courier; font-size: 18px; font-weight: bold; z-index: 10; color: #C50; border: 1px solid black; background-color: #FEB; padding: 10px; display: none;}
+		#roadprice { color: #ED2; }
+		#houseprice { color: #ED2; }
+		#officeprice { color: #ED2; }
+		#upgradeprice { color: #ED2; }
+	</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+</head>
+
+<body style="margin: 0; padding: 0;">
+	<audio id="soundtrack" loop="loop">
+		<source src="audio/ld23.ogg">
+		<source src="audio/ld23.mp3">
+		<source src="audio/ld23.wav">
+		<embed src="audio/ld23">
+	</audio>
+	<canvas id="background" width="720" height="480" style="border: 1px solid black;"></canvas>
+	<canvas id="canvas" width="720" height="480" class="field" style="position: absolute; top: 0; left: 0; z-index: 1;"></canvas>
+	<div id="hud" style="min-width: 130px; height: 30px; position: absolute; top: 0; left: 0; background: url('img/hudbg.png') no-repeat;">
+		<img src="img/coin.png" alt="coin" style="vertical-align:middle; margin: 0;"><span id="coin" style="font-family: Courier; color: #C50; font-size: 16px; font-weight: bold;">23</span>
+		<img src="img/person.png" alt="people" style="vertical-align:middle; margin: 0 2px 0 5px;"><span id="population" style="font-family: Courier; color: #C50; font-size: 16px; font-weight: bold;">0[0]</span>
+	</div>
+	<div id="buildmenu" class="menu">		
+		<a href="#" onClick="Road(menux,menuy,true)" style="display: block; position: absolute; top: 0; left: 30px;"><img src="img/build_road.png" alt="road" border="0"></a>
+		<span onClick="Road(menux,menuy,true)" class="price" id="roadprice" style="top: -9px; left: 40px;">1</span>
+		<a href="#" onClick="House(menux, menuy, true)" style="display: block; position: absolute; top: 20px; left: 0;"><img src="img/build_house.png" alt="house" border="0"></a>
+		<span onClick="House(menux, menuy, true)" class="price" id="houseprice" style="top: 11px; left: 8px;">5</span>
+		<a href="#" onClick="Office(menux, menuy)" style="display: block; position: absolute; top: 20px; left: 60px;"><img src="img/build_office.png" alt="office" border="0"></a>
+		<span onClick="Office(menux, menuy)" class="price" id="officeprice" style="top: 11px; left: 65px;">10</span>
+		<a href="#" onClick="menucancel()" style="display: block; position: absolute; top: 40px; left: 30px;"><img src="img/cancel.png" alt="cancel" border="0"></a>
+	</div>
+	<div id="upgrademenu" class="menu">
+		<a href="#" onClick="upgrade(menux,menuy)" style="display: block; position: absolute; top: 0; left: 30px;"><img src="img/upgrade.png" alt="upgrade" border="0"></a>
+		<span onClick="upgrade(menux,menuy)" class="price" id="upgradeprice" style="top: -9px; left: 40px;">7</span>
+		<a href="#" onClick="demolishOffice(menux, menuy)" style="display: block; position: absolute; top: 20px; left: 0;"><img src="img/demolish.png" alt="demolish" border="0"></a>
+		<a href="#" onClick="menucancel()" style="display: block; position: absolute; top: 40px; left: 30px;"><img src="img/cancel.png" alt="cancel" border="0"></a>
+	</div>
+	<div id="demolishHousemenu" class="menu">
+		<a href="#" onClick="demolishHouse(menux, menuy)" style="display: block; position: absolute; top: 20px; left: 0;"><img src="img/demolish.png" alt="demolish" border="0"></a>
+		<a href="#" onClick="menucancel()" style="display: block; position: absolute; top: 40px; left: 30px;"><img src="img/cancel.png" alt="cancel" border="0"></a>
+	</div>
+	<div id="demolishRoadmenu" class="menu">
+		<a href="#" onClick="demolishRoad(menux, menuy)" style="display: block; position: absolute; top: 20px; left: 0;"><img src="img/demolish.png" alt="demolish" border="0"></a>
+		<a href="#" onClick="menucancel()" style="display: block; position: absolute; top: 40px; left: 30px;"><img src="img/cancel.png" alt="cancel" border="0"></a>
+	</div>
+	<div id="demolishOfficemenu" class="menu">
+		<a href="#" onClick="demolishOffice(menux, menuy)" style="display: block; position: absolute; top: 20px; left: 0;"><img src="img/demolish.png" alt="demolish" border="0"></a>
+		<a href="#" onClick="menucancel()" style="display: block; position: absolute; top: 40px; left: 30px;"><img src="img/cancel.png" alt="cancel" border="0"></a>
+	</div>
+	<div id="tutorial0" class="tutorial" style="top: 200px; left: 185px; width: 350px; display: block;">
+		<p>Welcome to My Tiny Town! <a href="#" onClick="tutorial(1);">[Next]</a></p>
+	</div>
+	<div id="tutorial1" class="tutorial" style="top: 320px; left: 50px; width: 350px;">
+		<p>Your objective is - ironically - to build a huge town, and have as many people living in it as possible. <a href="#" onClick="tutorial(2);">[Next]</a></p>
+	</div>
+	<div id="tutorial2" class="tutorial" style="top: 20px; left: 150px; width: 500px;">
+		<p>In the top left corner you can see how many coins you have. Next to it is your population and in [brackets] the number of job opportunities you provide. <a href="#" onClick="tutorial(3);">[Next]</a></p>
+	</div>
+	<div id="tutorial3" class="tutorial" style="top: 50px; left: 20px; width: 200px;">
+		<p>At the moment, no one lives here. We need a home to let somebody move in. Click an empty spot, and click the house icon to build the house. Note that you can only build next to roads.</p>
+	</div>
+	<div id="tutorial4" class="tutorial" style="top: 200px; left: 20px; width: 200px;">
+		<p>Excellent! Now build him an office. People with jobs pay you about twice as much tax. Click the desired spot, then the office icon. Drag the map with your mouse if you need to.</p>
+	</div>
+	<div id="tutorial5" class="tutorial" style="top: 150px; left: 20px; width: 200px;">
+		<p>Good! You may notice the number "1" on top of the office. That means that is has one floor. Every floor can accomodate one person. Click your office to add an extra floor to it!</p>
+	</div>
+	<div id="tutorial6" class="tutorial" style="top: 150px; left: 450px; width: 200px;">
+		<p>We can now employ someone else too. Build a home for your second citizen!</p>
+	</div>
+	<div id="tutorial7" class="tutorial" style="top: 320px; left: 20px; width: 500px;">
+		<p>Oops, you don't have enough coins! You're going to have to wait some time so that your people can get you enough. The more people you have, especially with jobs, the faster you earn coins.</p>
+	</div>
+	<div id="tutorial8" class="tutorial" style="top: 280px; left: 20px; width: 500px;">
+		<p>You now know everything you need to. Now expand, the sea is your limit! <a href="#" onClick="tutorial(9);">[Go!]</a> <i>(I wanted to add decorations, shops and actual people walking around to make it more fun, but hey, it's my first Ludum Dare entry</i> <b>:)</b> <i>)</i></p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+	color: white;
+}
+#canvas {
+	cursor: url(img/cursor.cur) 14 14, crosshair;
+}
+#bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -10;
+}
+#tip {
+	position: absolute;
+	width: 190px;
+	padding: 10px;
+	background-color: rgba(10, 10, 10, 0.5); 
+	display: none;
+	z-index: 30;
+}
+#hud {
+	position: absolute;
+	left: 170px;
+	top: 500px;
+	z-index: 20;
+	padding: 10px 5px 10px 40px;
+	font-size: 20px;
+	height: 20px;
+	width: 80px;
+	text-shadow: 0 0 10px white;
+	background: url(img/hud.png) no-repeat;
+	display: none;
+}
+#console {
+	position: absolute;
+	top: 500px;
+	left: 400px;
+	font-family: Courier New;
+	background-color: black;
+	color: green;
+	padding: 10px;
+	display: none;
+}
+#mainmenu {
+	background: url(img/mainbg.png) no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 40;
+	width: 480;
+	height: 330px;
+	padding: 210px 240px 0 240px;
+	margin: 0;
+}
+#instructions {
+	position: absolute;
+	top: 325px;
+	left: 0;
+	z-index: 50;
+	width: 960px;
+	height: 215px;
+	margin: 0;
+	display: none;
+}
+#menubutton {
+	position: absolute;
+	top: 440px;
+	left: 280px;
+	cursor: pointer;
+	display: none;
+}
+.button {
+	width: 400px;
+	height: 55px;
+	margin: 10px 40px;
+	cursor: pointer;
+}
+.newgame {
+	background: url(img/newgame.png) no-repeat;
+}
+.newgame:hover {
+	background: url(img/newgame_hover.png) no-repeat;
+}
+.loading {
+	background: url(img/loading.png) no-repeat;
+}
+.instructions {
+	background: url(img/instructions.png) no-repeat;
+}
+.instructions:hover {
+	background: url(img/instructions_hover.png) no-repeat;
+}
+.normal {
+	background: url(img/normal.png) no-repeat;
+}
+.normal:hover {
+	background: url(img/normal_hover.png) no-repeat;
+}
+.easy {
+	background: url(img/easy.png) no-repeat;
+}
+.easy:hover {
+	background: url(img/easy_hover.png) no-repeat;
+}
+#pausemenu {
+	background: url(img/pausemenu.png) no-repeat;
+	background-position: center top; 
+	background-color: rgba(0, 0, 0, 0.8);
+	display: none;
+	width: 880;
+	height: 440;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 100px 40px 0 40px;
+	margin: 0;
+}
+#pausemenu p {
+	position: relative;
+	margin: 20px 0;
+}
+#bmn {
+	font-weight: bold;
+	font-size: 30px;
+	padding: 13px 0 13px 45px;
+	background: url(img/node_bm_available.png) no-repeat;
+	width: 35px;
+	cursor: default;
+	text-shadow: 0 0 10px white;
+}
+#score {
+	font-weight: bold;
+	font-size: 22px;
+	padding: 12px 0 12px 100px;
+	background: url(img/score.png) no-repeat;
+	width: 100px;
+	height: 56px;
+	cursor: default;
+	text-shadow: 0 0 10px white;
+	line-height: 85%;
+}
+#score span {
+	font-size: 13px;
+}
+.node {
+	position: absolute;
+	top: 0;
+	cursor: pointer;
+}
+.mask {
+	display: none;
+	z-index: 10;
+	cursor: default;
+}
+.first {
+	left: 310px;
+}
+.second {
+	left: 446px;
+}
+.third {
+	left: 582px;
+}
+.fourth {
+	left: 718px;
+}

@@ -1,0 +1,9 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="1">
+            <File firstVisibleLine="639" xOffset="0" scrollWidth="1" startPos="24993" endPos="24940" selMode="0" lang="HTML" encoding="-1" filename="C:\Users\G&#x00E1;bor\Documents\web\Tortamin&#x00E1;tor m&#x00E1;solata\index.html" />
+            <File firstVisibleLine="391" xOffset="0" scrollWidth="840" startPos="25016" endPos="25016" selMode="0" lang="HTML" encoding="-1" filename="C:\Users\G&#x00E1;bor\Documents\web\Tortamin&#x00E1;tor m&#x00E1;solata\index2.html" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>

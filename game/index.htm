@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	  <head>
+		<title>Game</title>
+		<script type="text/javascript" src="scripts.js"></script>
+		<style type="text/css">
+			  body { font-family: Arial; }
+			  h1 { color: blue; }
+			  #menu a { color: blue; display: block; border: 1px solid black; text-decoration: none; font-weight: bold; width: 300px; margin: 10px auto; padding: 10px; }
+			  #menu a:hover { background-color: #CCC; }
+			  #canvas { border: 1px solid black; }
+			  #console { color: white; background-color: black; height: 45px; width: 720px; overflow: auto; font-family: Courier New; font-size: 12px; border: 1px solid black; }
+			  #menu { background-color: white; width: 700px; height: 460px; position: absolute; top: 0px; border: 11px solid black; }
+		</style>
+	<link rel="shortcut icon" href="../img/favicon.ico">
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+	<meta property="og:title" content="Avoid the missiles! - An addictive 2D arcade game" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://MagyarGabor.net46.net/game/index.htm" />
+	<meta property="og:image" content="http://magyargabor.net46.net/img/icon.png" />
+	<meta property="og:site_name" content="MagyarGabor.net46.net" />
+	<meta property="fb:admins" content="1651020741" />
+	</head>
+
+	<body onkeydown="bill(event);" onkeyup="billfel(event);">
+	<!-- <div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=239831182749567";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script> -->
+		<center><p><b>Avoid the missiles!</b><br>
+		<i>(Use the arrow keys to move.)</i></p></center>
+		<div style="margin: 0 auto; width: 720px; position: relative; text-align: center;">
+			<div id="menu"><br>
+				<h1>New Game</h1>
+				<a href="#" onClick="document.getElementById('menu').style.display = 'none'; menu = false; initialise(0);">Easy<br><small>(shortcut: V)</small></a>
+				<a href="#" onClick="document.getElementById('menu').style.display = 'none'; menu = false; initialise(1);">Medium<br><small>(shortcut: B)</small></a>
+				<a href="#" onClick="document.getElementById('menu').style.display = 'none'; menu = false; initialise(2);">Hard<br><small>(shortcut: N)</small></a>
+				<a href="#" onClick="document.getElementById('menu').style.display = 'none'; menu = false; initialise(3);">Extreme<br><small>(shortcut: M)</small></a>
+				<div class="fb-like" data-href="http://magyargabor.net46.net/game/index.htm" data-send="true" data-width="300" data-show-faces="true" data-colorscheme="light"></div>
+			</div>
+			<canvas id="canvas" width="720" height="480"></canvas>
+		</div>
+		<center>
+			<div id="console"></div>
+<!-- 			<p style="font-size: 11px;"><a href="http://magyargabor.net46.net/">&copy; GaborMagyar 2011</a></p>
+ -->		</center>
+	</body>
+</html>

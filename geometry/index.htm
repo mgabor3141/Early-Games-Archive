@@ -1,0 +1,122 @@
+<html>
+<head>
+	<title>Geometry</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+	<link rel="shortcut icon" href="img/favicon.ico">
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-34364014-1']);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</head>
+
+<body onkeydown="keyDown(event);" onkeyup="keyUp(event);" onload="preload();">
+	<canvas id="canvas" width="960" height="540"></canvas>
+	<img src="img/bg.png" alt="bg" id="bg">
+	<div id="tip"></div>
+	<div id="hud">0</div>
+	<div id="console"></div>
+	<div id="mainmenu">
+		<div id="gamestart" class="button loading" onClick="if (loaded) { initialize(); document.getElementById('s_menu').pause(); }"></div>
+		<div class="button normal" onClick='difficulty = !difficulty; this.className = (difficulty)?"button normal":"button easy"; document.getElementById("score").style.background = difficulty?"url(img/score.png) no-repeat":"url(img/score_easy.png) no-repeat"'></div>
+		<div class="button instructions" onClick="document.getElementById('instructions').style.display = document.getElementById('instructions').style.display != 'block' ? 'block' : 'none';"></div>
+	</div>
+	<div id="instructions">
+		<img src="img/instructions_left.png" style="position: absolute; left: 0; bottom: 0;" alt="">
+		<img src="img/instructions_right.png" style="position: absolute; right: 0; bottom: 0;" alt="">
+	</div>
+	<div id="pausemenu">
+		<p>
+			<img src="img/movespeed.png" alt="movespeed">
+			<img id="0_1" class="first node" src="img/node_first_gotten.png" alt="node">
+			<img id="0__1" class="first node" src="img/node0_1.png" alt="node">
+			<img id="mask0_1" class="first node mask" src="img/node_first_mask.png" alt="node">
+			<img id="0_2" class="second node" src="img/node_gotten.png" alt="node">
+			<img id="0__2" class="second node" src="img/node0_2.png" alt="node">
+			<img id="mask0_2" class="second node mask" src="img/node_mask.png" alt="node">
+			<img id="0_3" class="third node" src="img/node_gotten.png" alt="node">
+			<img id="0__3" class="third node" src="img/node0_3.png" alt="node">
+			<img id="mask0_3" class="third node mask" src="img/node_mask.png" alt="node">
+			<img id="0_4" class="fourth node" src="img/node_max_gotten.png" alt="node">
+			<img id="0__4" class="fourth node" src="img/node0_4.png" alt="node">
+			<img id="mask0_4" class="fourth node mask" src="img/node_max_mask.png" alt="node">
+		</p>
+		<p>
+			<img src="img/weapon.png" alt="weapon">
+			<img id="1_1" class="first node" src="img/node_first_gotten.png" alt="node">
+			<img id="1__1" class="first node" src="img/node1_1.png" alt="node">
+			<img id="mask1_1" class="first node mask" src="img/node_first_mask.png" alt="node">
+			<img id="1_2" class="second node" src="img/node_gotten.png" alt="node">
+			<img id="1__2" class="second node" src="img/node1_2.png" alt="node">
+			<img id="mask1_2" class="second node mask" src="img/node_mask.png" alt="node">
+			<img id="1_3" class="third node" src="img/node_gotten.png" alt="node">
+			<img id="1__3" class="third node" src="img/node1_3.png" alt="node">
+			<img id="mask1_3" class="third node mask" src="img/node_mask.png" alt="node">
+			<img id="1_4" class="fourth node" src="img/node_max_gotten.png" alt="node">
+			<img id="1__4" class="fourth node" src="img/node1_4.png" alt="node">
+			<img id="mask1_4" class="fourth node mask" src="img/node_max_mask.png" alt="node">
+		</p>
+		<p>
+			<img src="img/weaponspecial.png" alt="weaponspecial">
+			<img id="2_1" class="first node" src="img/node_first_gotten.png" alt="node">
+			<img id="2__1" class="first node" src="img/node2_1.png" alt="node">
+			<img id="mask2_1" class="first node mask" src="img/node_first_mask.png" alt="node">
+			<img id="2_2" class="second node" src="img/node_gotten.png" alt="node">
+			<img id="2__2" class="second node" src="img/node2_2.png" alt="node">
+			<img id="mask2_2" class="second node mask" src="img/node_mask.png" alt="node">
+			<img id="2_3" class="third node" src="img/node_gotten.png" alt="node">
+			<img id="2__3" class="third node" src="img/node2_3.png" alt="node">
+			<img id="mask2_3" class="third node mask" src="img/node_mask.png" alt="node">
+			<img id="2_4" class="fourth node" src="img/node_max_gotten.png" alt="node">
+			<img id="2__4" class="fourth node" src="img/node2_4.png" alt="node">
+			<img id="mask2_4" class="fourth node mask" src="img/node_max_mask.png" alt="node">
+		</p>
+		<p>
+			<img src="img/bombs.png" alt="bombs">
+			<img id="3_1" class="first node" src="img/node_first_available.png" alt="node">
+			<img id="3__1" class="first node" onClick="if (!gameover) { p.bm++; p.cr -= 250; document.getElementById('hud').innerHTML = p.cr; redrawNodes(); }" onMouseOver="tooltip('3__1');" onMouseOut="toolout();" src="img/node3_1.png" alt="node">
+			<img id="mask3_1" class="first node mask" src="img/node_first_mask.png" alt="node">
+			<span id="bmn" class="second node">1</span>
+			<span id="score" class="third node">Score<br><span>Hi-score</span></span>
+		</p>
+		<img id="menubutton" src="img/mainmenu.png" alt="MainMenu" onClick='clearTimeout(next); document.getElementById("pausemenu").style.display = "none"; document.getElementById("mainmenu").style.display = "block"; document.getElementById("menubutton").style.display = "none"; document.getElementById("s_menu").play();'>
+	</div>
+	<audio id="s_shoot" preload="auto">
+		<source src="sound/shoot.ogg" type="audio/ogg">
+		<source src="sound/shoot.mp3" type="audio/mp3">
+		<source src="sound/shoot.wav" type="audio/wav">
+		Your browser does not support HTML5 audio.
+	</audio>
+	<audio id="s_collide" preload="auto">
+		<source src="sound/collide.ogg" type="audio/ogg">
+		<source src="sound/collide.mp3" type="audio/mp3">
+		<source src="sound/collide.wav" type="audio/wav">
+	</audio>
+	<audio id="s_explosion" preload="auto">
+		<source src="sound/explosion.ogg" type="audio/ogg">
+		<source src="sound/explosion.mp3" type="audio/mp3">
+		<source src="sound/explosion.wav" type="audio/wav">
+	</audio>
+	<audio id="s_losthp" preload="auto">
+		<source src="sound/losthp.ogg" type="audio/ogg">
+		<source src="sound/losthp.mp3" type="audio/mp3">
+		<source src="sound/losthp.wav" type="audio/wav">
+	</audio>
+	<audio id="s_gothp" preload="auto">
+		<source src="sound/gothp.ogg" type="audio/ogg">
+		<source src="sound/gothp.mp3" type="audio/mp3">
+		<source src="sound/gothp.wav" type="audio/wav">
+	</audio>
+	<audio id="s_menu" autoplay="autoplay" loop="loop" preload="auto">
+		<source src="sound/menu.ogg" type="audio/ogg">
+		<source src="sound/menu.mp3" type="audio/mp3">
+		<source src="sound/menu.wav" type="audio/wav">
+	</audio>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Secret Code</title>
+	<script type="text/javascript" src="scripts.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body onLoad="init()" onKeyDown="keyDown(event);">
+	<div id="container">
+		<div class="panel" id="instructions">
+			<h2>The Secret Code</h2>
+			<p>Your goal is to guess the pattern behind the <b>?</b>s at the top. Each row represents one guess. The fewer the guesses, the better. Sometimes it's sheer luck, sometimes it's hardcore logic. You never know.</p>
+			<p>After a guess, you get hints in the form of dots to the right of your guess. Each <span class="redmarker">&bull;</span> represents a color that is present in both your guess and the secret code, but is in the wrong place. <span class="yellowmarker">&bull;</span>s stand for exact matches. The number of dots help you make better guesses. The order of the dots however, does not.</p>
+			<p>Beware: The Secret Code may contain more of the same color!</p>
+			<p>To start a new game, <a href="index.htm">refresh the page!</a></p>
+			<p>Protip: Instead of clicking the color boxes on the right, you can also use the number keys (1-8), Enter and Backspace to enter your guesses faster!</p>
+			<p>Good Luck and Have Fun! :)</p>
+			<p><small>v1.2.1 &copy; mgabor.hu 2013</small></p>
+		</div>
+		<div class="panel">
+			<table>
+				<tr id="targetrow">
+					<td class="side"></td>
+					<td id="target0">?</td>
+					<td id="target1">?</td>
+					<td id="target2">?</td>
+					<td id="target3">?</td>
+					<td class="side"></td>
+				</tr>
+				<script type="text/javascript">
+					for (i = 14; i >= 0; i--) {
+						document.write('<tr><td class="side">'+(i+1)+'.</td><td id="0att'+i+'"></td><td id="1att'+i+'"></td><td id="2att'+i+'"></td><td id="3att'+i+'"></td><td class="side right"><span class="yellowmarker" id="yellow'+i+'"></span><span class="redmarker" id="red'+i+'"></span></td></tr>\n');
+					}
+				</script>
+				<tr id="selectrow">
+					<td class="side"></td>
+					<td id="select0" onClick="clearColor(0);" onMouseOver="this.innerHTML = 'x';" onMouseOut="this.innerHTML = '';"></td>
+					<td id="select1" onClick="clearColor(1);" onMouseOver="this.innerHTML = 'x';" onMouseOut="this.innerHTML = '';"></td>
+					<td id="select2" onClick="clearColor(2);" onMouseOver="this.innerHTML = 'x';" onMouseOut="this.innerHTML = '';"></td>
+					<td id="select3" onClick="clearColor(3);" onMouseOver="this.innerHTML = 'x';" onMouseOut="this.innerHTML = '';"></td>
+					<td class="side right" onClick="clearColor(4);" onMouseOver="this.innerHTML = '<- x';" onMouseOut="this.innerHTML = '';"></td>
+				</tr>
+				<tr><td class="side"></td><td colspan="4" onClick="enterColors();" id="enterbutton">Enter Colors</td></tr>
+			</table>
+		</div>
+		<div class="panel">
+			<script type="text/javascript">
+				for (i = 0; i <= 7; i++) {
+					document.write("<div class='colorbutton' id='color"+i+"' onClick='addColor("+i+")'></div>\n");
+				}
+			</script>
+		</div>
+	</div>
+</body>
+</html>

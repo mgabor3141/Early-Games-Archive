@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rules X</title>
+	<script src="http://www.quasimondo.com/StackBlurForCanvas/StackBlur.js" language="javascript"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+	<style type="text/css">
+		body { 
+			font-family: Arial;
+			margin: 10px;
+			padding: 0;
+			background-color: #CCC;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: -moz-none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		#start { position: absolute; top: 275px; left: 400px; height: 50px; width: 200px; background-image: url(img/start.png); cursor: pointer; }
+		#start:hover { background-position: 0 -50px; }
+		#new { display: none; position: absolute; top: 260px; left: 100px; height: 80px; width: 80px; background-image: url(img/new.png); cursor: pointer; }
+		#tick { display: none; position: absolute; top: 260px; right: 100px; height: 80px; width: 80px; background-image: url(img/tick.png); cursor: pointer; }
+		#level { display: none; position: absolute; top: 400px; left: 150px; height: 80px; width: 320px; background-image: url(img/level.png); cursor: pointer; }
+		#replay { display: none; position: absolute; top: 400px; right: 150px; height: 80px; width: 320px; background-image: url(img/replay.png); cursor: pointer; }
+		#sfx { position: absolute; top: 330px; left: 430px; height: 64px; width: 64px; background-image: url(img/sfx.png); cursor: pointer; }
+		#music { position: absolute; top: 330px; left: 504px; height: 64px; width: 64px; background-image: url(img/music.png); cursor: pointer; }
+		#new:hover, #tick:hover, #level:hover, #replay:hover { background-position: 0 -80px; }
+	</style>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-34364014-1']);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</head>
+
+<body onkeydown="keyd(event);" onkeyup="keyu(event);">
+	<div style="position: relative; width: 1000px; margin: 0 auto;">
+		<canvas id="bg" width="1000" height="600"></canvas>
+		<canvas id="canvas" width="1000" height="600" style="position: absolute; top: 0; left: 0;"></canvas>
+		<img src="img/menu.png" id="menu" style="border-width: 0; position: absolute; top: 0; left: 0;">
+		<div id="start" onClick="levelSelect(30); document.getElementById('hint').style.display = 'block';"> </div>
+		<div id="new" onClick="newLevel();"> </div>
+		<div id="tick" onClick="startGame();"> </div>
+		<div id="level" onClick="levelSelect(0);"> </div>
+		<div id="replay" onClick="startGame();"> </div>
+		<div id="sfx" onClick="sfxToggle();"> </div>
+		<div id="music" onClick="musicToggle();"> </div>
+		<p id="hint" style="display: none; text-align: center; width: 960px;">Hint: press both jump keys to start the game more conveniently!</p>
+	</div>
+	<p style="margin: 15px auto; color: #666; text-align: center; width: 960px;">Made in 48 hours for the 27th Ludum Dare 48 hour game jam</p>
+	<audio id="s_button" preload="auto">
+		<source src="sound/button.mp3" type="audio/mp3">
+		<source src="sound/button.ogg" type="audio/ogg">
+		<source src="sound/button.wav" type="audio/wav">
+	</audio>
+	<audio id="s_game" preload="auto">
+		<source src="sound/10s.mp3" type="audio/mp3">
+		<source src="sound/10s.ogg" type="audio/ogg">
+		<source src="sound/10s.wav" type="audio/wav">
+	</audio>
+	<audio id="s_jump1" preload="auto">
+		<source src="sound/jump1.mp3" type="audio/mp3">
+		<source src="sound/jump1.ogg" type="audio/ogg">
+		<source src="sound/jump1.wav" type="audio/wav">
+	</audio>
+	<audio id="s_jump2" preload="auto">
+		<source src="sound/jump2.mp3" type="audio/mp3">
+		<source src="sound/jump2.ogg" type="audio/ogg">
+		<source src="sound/jump2.wav" type="audio/wav">
+	</audio>
+	<audio id="s_shatter" preload="auto">
+		<source src="sound/shatter.mp3" type="audio/mp3">
+		<source src="sound/shatter.ogg" type="audio/ogg">
+		<source src="sound/shatter.wav" type="audio/wav">
+	</audio>
+	<audio id="s_shoot" preload="auto">
+		<source src="sound/shoot.mp3" type="audio/mp3">
+		<source src="sound/shoot.ogg" type="audio/ogg">
+		<source src="sound/shoot.wav" type="audio/wav">
+	</audio>
+	<audio id="s_win" preload="auto">
+		<source src="sound/win.mp3" type="audio/mp3">
+		<source src="sound/win.ogg" type="audio/ogg">
+		<source src="sound/win.wav" type="audio/wav">
+	</audio>
+	<audio id="s_menu" preload="auto" autoplay="auto">
+		<source src="sound/10s_menu.mp3" type="audio/mp3">
+		<source src="sound/10s_menu.ogg" type="audio/ogg">
+		<source src="sound/10s_menu.wav" type="audio/wav">
+		Your browser does not support HTML5 audio.
+	</audio>
+</body>
+</html>
